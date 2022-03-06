@@ -7,7 +7,7 @@
          <!-- <el-table-column prop="uuid" label="UUID" width="300" /> -->
         <el-table-column width="180" prop='uuid'>
           <template #default="row">
-            <el-button type="primary" size="small" round style="background-color: #0291B6">Details</el-button>
+            <el-button type="primary" size="small" round style="background-color: #0291B6" @click="goToDetails(row)">Details</el-button>
             <el-button type="danger" size="small" round @click="deleteInspection(row)">Delete</el-button>
           </template>
         </el-table-column>
@@ -24,7 +24,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions('inspections', ['deleteInspection'])
+    ...mapActions('inspections', ['deleteInspection']),
+    goToDetails (row) {
+      this.$router.push({ name: 'inspection-details', params: { id: row.row.uuid } })
+    }
   }
 }
 </script>

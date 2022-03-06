@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <router-link to="/">Inspections</router-link> | <router-link to="/inspection-details">Inspection Details</router-link>
+    <router-link to="/">Inspections</router-link> | <router-link to="/inspection-details/:id">Inspection Details</router-link>
   </div>
  <router-view />
 </template>
