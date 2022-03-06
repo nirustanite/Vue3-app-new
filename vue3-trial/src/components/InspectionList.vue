@@ -4,22 +4,27 @@
         <el-table-column prop="info.manual_revision" label="Manual Revision" width="300" />
         <el-table-column prop="info.customer" label="Customer" width="500" />
         <el-table-column prop="engine.model" label="Engine Model" width="300" />
-        <el-table-column width="180">
-          <template #default>
+         <!-- <el-table-column prop="uuid" label="UUID" width="300" /> -->
+        <el-table-column width="180" prop='uuid'>
+          <template #default="row">
             <el-button type="primary" size="small" round style="background-color: #0291B6">Details</el-button>
-            <el-button type="danger" size="small" round>Delete</el-button>
+            <el-button type="danger" size="small" round @click="deleteInspection(row)">Delete</el-button>
           </template>
         </el-table-column>
     </el-table>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   props: {
     inspections: {
       type: Array,
       required: true
     }
+  },
+  methods: {
+    ...mapActions('inspections', ['deleteInspection'])
   }
 }
 </script>

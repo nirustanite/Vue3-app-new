@@ -21,6 +21,9 @@ const inspections = {
     },
     GET_INSPECTIONS_FAILED (state){
       state.error = 'Error Occurred'
+    },
+    DELETE_INSPECTION (state, payload){
+      state.inspections = state.inspections.filter(inspection => inspection.uuid != payload)
     }
   },
   actions: { 
@@ -33,6 +36,9 @@ const inspections = {
       }catch(error){
          commit('GET_INSPECTIONS_FAILED')
       }
+    },
+    deleteInspection ({ commit }, data){
+      commit('DELETE_INSPECTION', data.row.uuid);
     }
   },
   getters: {
